@@ -1,0 +1,18 @@
+Grupo: 5 pessoas.
+Prazo: 1 ano e meio
+Meios de comunicação: Discord e Whatsapp.
+Dia da reunião fixa: 
+Nome do OS: 
+ 1 TAREFAS:
+ 1. TAREFA (TODOS): Estudar IA e agentes de IA :) (vou ver se eu consigo importar algum agente de ia para facilitar)     
+ 2. (ninguem escolheu): "arvore" de comandos do shell basico :).
+
+ 3. (ninguem escolheu): criação de macros em C.   
+
+3.(ninguem escolheu): criar a interface da tela inicial de quando dá o 1 boot (pode ser so o design em figma msm). 
+
+4. (ninguem escolheu): algum programa para facilitar o processo de transformar as img's jpeg, jpg, png, etc em imagens faceis de integrar no codigo do OS. 
+
+5. (ESQ): um codigo para facilitar a compilação, etc.
+
+6. (ESQ): Documentação inicial do projeto.
