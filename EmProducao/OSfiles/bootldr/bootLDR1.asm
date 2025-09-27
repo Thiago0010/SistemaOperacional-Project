@@ -1,17 +1,16 @@
-
-
 BITS 16
 ORG 0x7C00  ; Bootloader loaded at 0x7C00
 
 ; Constants
 SECTOR_SIZE EQU 512
 STAGE2_START_SECTOR EQU 2  ; Stage 2 starts at sector 2 (sector 1 is bootloader)
-STAGE2_SECTORS EQU 10      ; Number of sectors to load for Stage 2 (adjust as needed, max to fit in memory)
+STAGE2_SECTORS EQU 2      ; Number of sectors to load for Stage 2
 STAGE2_LOAD_ADDR EQU 0x7E00 ; Load address for Stage 2 (right after bootloader)
 
 ; Bootloader entry point
 start:
     cli                ; Disable interrupts
+    mov [boot_drive], dl  ; Save boot drive (passed by BIOS in DL)
     xor ax, ax         ; Zero AX
     mov ds, ax         ; Set DS to 0
     mov es, ax         ; Set ES to 0
@@ -21,7 +20,7 @@ start:
 
     ; Reset disk system
     mov ah, 0          ; Reset disk function
-    mov dl, 0x80       ; Drive number (0x00 for floppy, 0x80 for first HDD)
+    mov dl, [boot_drive]  ; Use saved boot drive (0x00 for floppy)
     int 0x13           ; Call BIOS interrupt
     jc disk_error      ; Jump if carry flag set (error)
 
@@ -31,6 +30,7 @@ start:
     mov ch, 0          ; Cylinder 0
     mov cl, STAGE2_START_SECTOR ; Sector to start reading from
     mov dh, 0          ; Head 0
+    mov dl, [boot_drive]  ; Use saved boot drive
     mov bx, STAGE2_LOAD_ADDR ; ES:BX = load address (ES=0 already)
     int 0x13           ; Call BIOS interrupt
     jc disk_error      ; Error if carry set
@@ -58,6 +58,7 @@ hang:
 
 ; Data
 error_msg db 'Disk error! Press any key to reboot...', 0
+boot_drive db 0    ; Storage for boot drive
 
 ; Fill to 510 bytes and add boot signature
 times 510 - ($ - $$) db 0

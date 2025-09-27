@@ -13,6 +13,6 @@ Nome do OS:
 
 4. (ninguem escolheu): algum programa para facilitar o processo de transformar as img's jpeg, jpg, png, etc em imagens faceis de integrar no codigo do OS. 
 
-5. (ESQ): um codigo para facilitar a compilação, etc.
+5. (ESQ): um codigo para facilitar a compilação, etc. ✔️
 
 6. (ESQ): Documentação inicial do projeto.
